@@ -1,5 +1,6 @@
 #include "BinaryTree.h"
 #include <iostream>
+#include <cstddef>
 
 using namespace std;
 
@@ -51,9 +52,9 @@ void BinaryTree::remove(int val) {
 Node* BinaryTree::remove(Node* node, int val) {
   if (node == nullptr) {
     return nullptr;
-  } else if (value < node->data) {
+  } else if (val < node->data) {
     node->left = remove(node->left, val);
-  } else if (value > node->data) {
+  } else if (val > node->data) {
     node->right = remove(node->right, val);
   } else {
     if ((node->left == nullptr) && (node->right == nullptr)) {
@@ -77,7 +78,7 @@ Node* BinaryTree::remove(Node* node, int val) {
 }
 
 Node* BinaryTree::findMin(Node* node) {
-  while ((node && node->left) != nullptr) {
+  while (node && node->left != nullptr) {
     node = node->left;
   }  
   return node;
